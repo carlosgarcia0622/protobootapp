@@ -15,10 +15,10 @@
     <description>A simple demo app for Spring Boot.</description>
     
     <properties>
-        <java.version>11</java.version>
+        <java.version>11</java.version><!-- Version a usar en la nube  -->
     </properties>
     
-    <dependencies>
+    <dependencies> <!-- Dependencias correspondientes a spring boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -35,13 +35,13 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
+        <plugins> <!-- Plugins que va a usar maven al hacer build -->
+            <plugin> <!-- check style: análisis estático para verificar reglas de estilo:-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <configLocation>google_checks.xml</configLocation><!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/ -->
+                    <configLocation>google_checks.xml</configLocation> <!-- Convenciones por defecto --> <!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/ -->
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
@@ -57,7 +57,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <plugin> <!-- Java code coverage -->
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
@@ -71,13 +71,13 @@
                         <id>report</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>report</goal>
+                            <goal>report</goal> <!-- se le pide generar reporte  -->
                         </goals>
                     </execution>
                     <execution>
                         <id>jacoco-check</id>
                         <goals>
-                            <goal>check</goal>
+                            <goal>check</goal> <!-- Si no se cumple un mínimo que haga para el ...  -->
                         </goals>
                         <configuration>
                             <rules>
@@ -85,9 +85,9 @@
                                     <element>PACKAGE</element>
                                     <limits>
                                         <limit>
-                                            <counter>LINE</counter>
+                                            <counter>LINE</counter> <!-- Se le pide que corra por líneas  -->
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.7</minimum>
+                                            <minimum>0.7</minimum> <!-- Minimo 70%  -->
                                         </limit>
                                     </limits>
                                 </rule>
